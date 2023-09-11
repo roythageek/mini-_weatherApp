@@ -1,0 +1,161 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  background-color:rgb(255, 255, 255);
+  font-family: 'DM Serif Display', serif;
+  position:relative;
+}
+#container{
+  width:25%;
+  height:400px;
+  margin:100px auto;
+  background: linear-gradient(135deg, #00feba,#5b548a);
+  color:white;
+  border-radius:5px;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.input-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 100px auto;
+  gap:15px;
+  overflow-x: hidden;
+  padding-top:40px;
+}
+.input{
+  padding:7px;
+  border:2px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color:rgb(0, 0, 0);
+  border-radius:5px;
+}
+.search-btn{
+  padding:5px;
+  border: 2px solid #5000ca;
+  background-color:#5000ca;
+  color:white;
+  border-radius:5px;
+}
+#disp-condition{
+  margin-top:-60px;
+  overflow-x: hidden;
+}
+.weather-icon{
+  display:block;
+  justify-content:center;
+  align-items:center;
+  margin: 0px auto;
+}
+.temp{
+  text-align:center;
+  font-size:45px;
+}
+.city{
+  text-align:center;
+}
+.details{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:60px;
+  margin:30px 0 auto;
+}
+.wind-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  font-size:15px;
+}
+.speed-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  font-size:15px;
+}
+.icon1{
+  position:absolute;
+  top:-50px;
+  left:250px;
+  animation: myicon1 10s infinite;
+}
+@keyframes myicon1{
+  from{
+    transform: translateX(0);
+    opacity:0.4;
+    height:40px;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+    height:100px;
+  }
+}
+.icon2{
+  position:absolute;
+  top:-50px;
+  right:200px;
+  animation: myicon2 3s linear;
+}
+@keyframes myicon2  {
+  from{
+    transform: translateX(0);
+    opacity:0;
+    height:300px;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+    height:150px;
+  }
+}
+
+.icon3{
+  position:absolute;
+  top: 280px;
+  right:200px;
+  animation: myicon3 10s infinite;
+  z-index:1;
+}
+@keyframes myicon3{
+  from{
+    transform: translateX(0);
+    opacity:0.4;
+    height:40px;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+    height:100px;
+  }
+}
+.icon4{
+  position:absolute;
+  top:300px;
+  left:250px;
+  animation: myicon4 10s linear;
+}
+@keyframes myicon4  {
+  from{
+    transform: translateX(0);
+    opacity:0;
+    height:300px;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+    height:150px;
+  }
+}
+svg{
+  position: absolute;
+  top:220px;
+  z-index:-1;
+}

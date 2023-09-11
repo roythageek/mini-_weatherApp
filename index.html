@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+
+    <div class="input-container">
+      <input type="text"  placeholder="Enter City Name" class="input">
+      <button class="search-btn">Search</button>
+    </div>
+
+    <div id="disp-condition">
+      <img src="images/clear-sky.png" alt="" height="80px;" class="weather-icon">
+      <h1 class="temp">22c</h1>
+      <h2 class="city">New York</h2>
+      <div class="details">
+
+        <div class="wind-container">
+          <img src="images/humidity.png" alt="" height="30px;">
+          <div>
+            <p class="humidity">50%</p>
+            <p>Humidity</p>
+          </div>
+        </div>
+
+        <div class="speed-container">
+          <img src="images/wind.png" alt="" height="30px;">
+          <div>
+            <p class="wind">15 km/h</p>
+            <p>Wind speed</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <img src="images/sun.png" alt="" height="70px;" class="icon1">
+    <!-- <img src="images/summer.png" alt="" height="150px;" class="icon2"> -->
+    <img src="images/rainy.png" alt="" height="100px" class="icon3">
+    <!-- <img src="images/spring.png" alt="" height="150px" class="icon4"> -->
+  </div>
+
+  <div class="svgee">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#097e5f" fill-opacity="1" d="M0,288L60,266.7C120,245,240,203,360,202.7C480,203,600,245,720,229.3C840,213,960,139,1080,122.7C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" ></path></svg>
+  </div>
+  <script>
+    const apiKey = "1a5069ff7ffb0464cb10ab43cfe041e8";
+    const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+    const searchBox = document.querySelector(".input");
+    const searchButton = document.querySelector(" .search-btn");
+    const weatherIcon = document.querySelector(" .weather-icon");
+
+
+  
+      async function weather(city){
+        const response = await fetch(apiURL +  city + `&appid=${apiKey}`);
+        var data = await response.json();
+
+      console.log(data);
+      document.querySelector(".city").innerHTML = data.name;
+      document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +" &deg; "+ "C";
+      document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
+      document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+
+      if(data.weather[0].main == "Clouds"){
+        weatherIcon.src = "images/cloudy.png"
+      }
+      else if(data.weather[0].main == "Clear"){
+        weatherIcon.src = "images/clear-sky.png"
+      }
+      else if(data.weather[0].main == "Rain"){
+        weatherIcon.src = "images/rainy.png"
+      }
+      else if(data.weather[0].main == "Drizzle"){
+        weatherIcon.src = "images/drizzle.png"
+      }
+    }
+
+
+    searchButton.addEventListener("click", ()=> {
+      weather(searchBox.value);
+    })
+      weather();
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//first method of fetching an API
+  //   let endpoint = "https://jsonplaceholder.typicode.com/posts"
+
+  //  const fetchApi = async ()=>{
+  //     let response = await fetch(endpoint)
+  //     let updatedResponse = await response.json()
+  //     console.log(updatedResponse)
+
+  //  }
+
+  //  fetchApi()
+
+
+
+    //second method of fetching an API
+    // const fetchInfo =() => {
+    //   fetch(endpoint)
+    //   .then(response=>response.json())
+    //   .then((result)=>{
+    //     console.log(result);
+    //   })
+    //   .catch((err)=>{
+    //     console.log(err);
+    //   })
+    // }
+    //openweathermap.org 
+  </script>
+</body>
+</html>  
